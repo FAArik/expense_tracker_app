@@ -1,4 +1,4 @@
-import 'package:expense_tracker/models/expense.dart';
+import 'package:expense_tracker_app/models/expense.dart';
 import 'package:flutter/material.dart';
 
 class ExpenseItem extends StatelessWidget {
@@ -34,6 +34,7 @@ class ExpenseItem extends StatelessWidget {
         ),
         onTap: () {},
         onLongPress: () {},
+        style: ListTileStyle.list,
       ),
     );
   }
