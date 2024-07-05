@@ -14,15 +14,61 @@ class Main extends StatefulWidget {
   }
 }
 
+var kColorScheme = ColorScheme.fromSeed(seedColor: Colors.deepPurple);
+var kDarkColorScheme = ColorScheme.fromSeed(
+    brightness: Brightness.dark,
+    seedColor: const Color.fromARGB(255, 3, 75, 134));
+
 class _Main extends State<Main> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Expense Tracker',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+        darkTheme: ThemeData.dark().copyWith(
+          colorScheme: kDarkColorScheme,
+          appBarTheme: const AppBarTheme().copyWith(
+            backgroundColor: kDarkColorScheme.onPrimaryContainer,
+            foregroundColor: kDarkColorScheme.onPrimary,
+          ),
+          cardTheme: const CardTheme().copyWith(
+            color: kDarkColorScheme.secondaryContainer,
+            margin: const EdgeInsets.all(10),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+                backgroundColor: kDarkColorScheme.primaryContainer,
+                foregroundColor: kDarkColorScheme.onPrimaryContainer),
+          ),
+          textTheme: ThemeData().textTheme.copyWith(
+                titleLarge: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  color: kDarkColorScheme.onSecondaryContainer,
+                ),
+              ),
         ),
+        theme: ThemeData().copyWith(
+          colorScheme: kColorScheme,
+          appBarTheme: AppBarTheme().copyWith(
+            backgroundColor: kColorScheme.onPrimaryContainer,
+            foregroundColor: kColorScheme.onPrimary,
+          ),
+          cardTheme: const CardTheme().copyWith(
+            color: kColorScheme.secondaryContainer,
+            margin: const EdgeInsets.all(10),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: kColorScheme.primaryContainer,
+            ),
+          ),
+          textTheme: ThemeData().textTheme.copyWith(
+                titleLarge: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  color: kColorScheme.onSecondaryContainer,
+                ),
+              ),
+        ),
+        themeMode: ThemeMode.system,
         home: const Expenses());
   }
 }
