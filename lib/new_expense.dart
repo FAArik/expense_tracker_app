@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:expense_tracker_app/models/expense.dart';
 
 class NewExpense extends StatefulWidget {
-  const NewExpense({super.key});
+  const NewExpense({super.key, required this.onAddExpense});
+  final void Function(Expense addedexpense) onAddExpense;
   @override
   State<NewExpense> createState() {
     return _NewExpenseState();
@@ -38,9 +39,26 @@ class _NewExpenseState extends State<NewExpense> {
         context: context,
         builder: (ctx) => AlertDialog(
           title: const Text("Invalid Input"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: Text("Okay"),
+            )
+          ],
         ),
       );
     }
+    widget.onAddExpense(
+      Expense(
+        title: _titleController.text,
+        amount: enteredAmount!,
+        date: _selectedDate!,
+        category: _selectedCategory!,
+      ),
+    );
+    Navigator.pop(context);
   }
 
   @override
