@@ -48,7 +48,7 @@ class _Main extends State<Main> {
         ),
         theme: ThemeData().copyWith(
           colorScheme: kColorScheme,
-          appBarTheme: AppBarTheme().copyWith(
+          appBarTheme: const AppBarTheme().copyWith(
             backgroundColor: kColorScheme.onPrimaryContainer,
             foregroundColor: kColorScheme.onPrimary,
           ),
@@ -68,7 +68,7 @@ class _Main extends State<Main> {
                 ),
               ),
         ),
-        themeMode: ThemeMode.system,
+        themeMode: ThemeMode.light,
         home: const Expenses());
   }
 }
